@@ -48,29 +48,19 @@ export function addTwoNumbers(l1: ListNode | null, l2: ListNode | null): ListNod
     let hasExtra = false
     const result = []
     for (const [i, b] of head.entries()) {
-        const extra = hasExtra ? b + 1 : b
+        let addition = hasExtra ? b + 1 : b
         if (pl2[i]) {
-            let addition = extra + pl2[i]
-
-            if (addition >= 10) {
-                hasExtra = true
-                addition = addition - 10
-            } else {
-                hasExtra = false
-            }
-
-            result.push(addition)
-        } else {
-            let addition = extra
-            if (addition >= 10) {
-                hasExtra = true
-                addition = addition - 10
-            } else {
-                hasExtra = false
-            }
-
-            result.push(addition)
+            addition = addition + pl2[i]
         }
+
+        if (addition >= 10) {
+            hasExtra = true
+            addition = addition - 10
+        } else {
+            hasExtra = false
+        }
+
+        result.push(addition)
     }
 
     if (hasExtra) {
