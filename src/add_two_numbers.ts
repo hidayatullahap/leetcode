@@ -44,13 +44,14 @@ export function addTwoNumbers(l1: ListNode | null, l2: ListNode | null): ListNod
     const pl1 = parseLinkedList(l1!)
     const pl2 = parseLinkedList(l2!)
     const head = pl1.length >= pl2.length ? pl1 : pl2
+    const tail = pl1.length >= pl2.length ? pl2 : pl1
 
     let hasExtra = false
     const result = []
     for (const [i, b] of head.entries()) {
         let addition = hasExtra ? b + 1 : b
-        if (pl2[i]) {
-            addition = addition + pl2[i]
+        if (tail[i]) {
+            addition = addition + tail[i]
         }
 
         if (addition >= 10) {
